@@ -1,0 +1,56 @@
+/* App样式 */
+.site-layout {
+  background: #fff;
+}
+
+.site-layout-background {
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  height: 64px;
+  background: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+
+.logo h1 {
+  color: #fff;
+  font-size: 16px;
+  margin: 0;
+}
+
+.header-title {
+  color: #1890ff;
+  margin: 0;
+  line-height: 64px;
+}
+
+/* 菜单样式 */
+.ant-menu-item-selected {
+  background-color: #1890ff !important;
+}
+
+.ant-menu-item-selected a {
+  color: #fff !important;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+  .header-title {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo h1 {
+    font-size: 14px;
+  }
+  
+  .header-title {
+    font-size: 14px;
+  }
+}
