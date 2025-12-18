@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+         http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <!-- 父工程依赖（对应项目根目录pom.xml） -->
+    <parent>
+        <groupId>com.smarthome</groupId>
+        <artifactId>smart-home-analytics</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>online-job</artifactId>
+    <packaging>jar</packaging>
+    <name>online-job</name>
+
+    <!-- 依赖配置 -->
+    <dependencies>
+    <!-- Flink核心依赖（集群模式，scope=provided表示集群已提供，打包时排除） -->
+    <dependency>
+        <groupId>org.apache.flink</groupId>
+        <artifactId>flink-java</artifactId>
+        <version>1.17.0</version>
+    </dependency>
+    <dependency>
+        <groupId>org.apache.flink</groupId>
+        <artifactId>flink-streaming-java</artifactId>
+        <version>1.17.0</version>
+    </dependency>
+    <dependency>
+        <groupId>org.apache.flink</groupId>
+        <artifactId>flink-clients</artifactId>
+        <version>1.17.0</version>
+    </dependency>
+
+    <!-- MySQL驱动（打包时包含，用于连接hadoop102的MySQL） -->
+    <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>5.1.37</version>
+    </dependency>
+
+    <!-- Redis客户端（适配Redis 6.2+，打包时包含） -->
+    <dependency>
+        <groupId>redis.clients</groupId>
+        <artifactId>jedis</artifactId>
+        <version>4.4.6</version>
+    </dependency>
+
+    <!-- JSON处理依赖（支持LocalDateTime等时间类型，打包时包含） -->
+    <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-databind</artifactId>
+        <version>2.14.0</version>
+    </dependency>
+    <dependency>
+        <groupId>com.fasterxml.jackson.datatype</groupId>
+        <artifactId>jackson-datatype-jsr310</artifactId>
+        <version>2.14.0</version>
+    </dependency>
+
+    <!-- 日志依赖（SLF4J+Logback，打包时包含） -->
+    <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
+        <version>1.7.36</version>
+    </dependency>
+    <dependency>
+        <groupId>ch.qos.logback</groupId>
+        <artifactId>logback-classic</artifactId>
+        <version>1.2.11</version>
+    </dependency>
+
+    <!-- Java原生HTTP服务依赖（无需额外配置，打包时包含） -->
+    <dependency>
+        <groupId>com.sun.net.httpserver</groupId>
+        <artifactId>http</artifactId>
+        <version>20070405</version>
+    </dependency>
+
+        <dependency>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+            <version>2.2</version>
+        </dependency>
+</dependencies>
+
+        <!-- 构建配置（编译、打包） -->
+    <build>
+        <plugins>
+            <!-- Maven编译插件：指定JDK版本 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
+                </configuration>
+            </plugin>
+
+            <!-- Maven Shade插件：强制打包所有依赖，包括MySQL驱动 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.2.4</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <!-- 关键：包含所有依赖，不排除任何包 -->
+                            <createDependencyReducedPom>false</createDependencyReducedPom>
+                            <filters>
+                                <filter>
+                                    <artifact>*:*</artifact>
+                                    <excludes>
+                                        <!-- 仅排除签名文件，避免打包冲突 -->
+                                        <exclude>META-INF/*.SF</exclude>
+                                        <exclude>META-INF/*.DSA</exclude>
+                                        <exclude>META-INF/*.RSA</exclude>
+                                    </excludes>
+                                </filter>
+                            </filters>
+                            <!-- 合并驱动的服务配置文件，让JVM能自动加载驱动 -->
+                            <transformers>
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    <mainClass>com.smarthome.online.job.InterfaceErrorRateRankingJob</mainClass>
+                                </transformer>
+                            </transformers>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
