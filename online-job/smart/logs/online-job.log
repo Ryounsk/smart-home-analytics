@@ -1,0 +1,155 @@
+2025-12-18 15:47:07 [main] ERROR com.smarthome.online.util.DBUtil - DBUtil初始化失败！
+java.lang.ClassCastException: class java.lang.Integer cannot be cast to class java.lang.String (java.lang.Integer and java.lang.String are in module java.base of loader 'bootstrap')
+	at com.smarthome.online.util.DBUtil.<clinit>(DBUtil.java:32)
+	at DBTest.main(DBTest.java:9)
+2025-12-18 15:48:53 [main] INFO  com.smarthome.online.util.DBUtil - MySQL驱动初始化完成，URL：jdbc:mysql://hadoop102:3306/ha_device_log?useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true，用户名：root
+2025-12-18 15:48:53 [main] DEBUG com.smarthome.online.util.DBUtil - MySQL连接获取成功：com.mysql.cj.jdbc.ConnectionImpl@54e7df6a
+2025-12-18 16:01:59 [main] INFO  com.smarthome.online.util.DBUtil - 开始初始化DBUtil...
+2025-12-18 16:01:59 [main] INFO  com.smarthome.online.util.DBUtil - 尝试读取application-online.yml配置，路径：classpath:application-online.yml
+2025-12-18 16:01:59 [main] INFO  com.smarthome.online.util.DBUtil - 成功读取spring节点配置
+2025-12-18 16:01:59 [main] INFO  com.smarthome.online.util.DBUtil - 成功读取spring.datasource节点配置
+2025-12-18 16:01:59 [main] INFO  com.smarthome.online.util.DBUtil - 数据库配置读取完成：URL=jdbc:mysql://hadoop102:3306/ha_device_log?useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true, USERNAME=root, PASSWORD=***
+2025-12-18 16:01:59 [main] INFO  com.smarthome.online.util.DBUtil - 尝试加载MySQL驱动：com.mysql.cj.jdbc.Driver
+2025-12-18 16:01:59 [main] INFO  com.smarthome.online.util.DBUtil - DBUtil初始化成功，MySQL驱动加载完成
+2025-12-18 16:01:59 [main] DEBUG com.smarthome.online.util.DBUtil - 尝试获取MySQL连接：URL=jdbc:mysql://hadoop102:3306/ha_device_log?useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true, USERNAME=root
+2025-12-18 16:01:59 [main] INFO  com.smarthome.online.util.DBUtil - MySQL连接获取成功，连接ID：com.mysql.cj.jdbc.ConnectionImpl@764faa6
+2025-12-18 16:01:59 [main] DEBUG com.smarthome.online.util.DBUtil - MySQL资源关闭完成
+2025-12-18 18:37:07 [main] INFO  com.smarthome.online.ApiServer - API服务器启动成功，监听端口: 8080
+2025-12-18 18:37:07 [main] INFO  com.smarthome.online.ApiServer - 可用接口:
+2025-12-18 18:37:07 [main] INFO  com.smarthome.online.ApiServer -   GET http://localhost:8080/api/realtime/data
+2025-12-18 18:37:07 [main] INFO  com.smarthome.online.ApiServer -   GET http://localhost:8080/api/realtime/circuit-breaker
+2025-12-18 18:37:07 [main] INFO  com.smarthome.online.ApiServer -   GET http://localhost:8080/api/realtime/normal-interfaces
+2025-12-18 18:37:11 [HTTP-Dispatcher] DEBUG c.s.o.ApiServer$RealtimeDataHandler - 返回实时数据: 15条记录
+2025-12-18 18:38:45 [main] INFO  com.smarthome.online.ApiServer - API服务器启动成功，监听端口: 8080
+2025-12-18 18:38:45 [main] INFO  com.smarthome.online.ApiServer - 可用接口:
+2025-12-18 18:38:45 [main] INFO  com.smarthome.online.ApiServer -   GET http://localhost:8080/api/realtime/data
+2025-12-18 18:38:45 [main] INFO  com.smarthome.online.ApiServer -   GET http://localhost:8080/api/realtime/circuit-breaker
+2025-12-18 18:38:45 [main] INFO  com.smarthome.online.ApiServer -   GET http://localhost:8080/api/realtime/normal-interfaces
+2025-12-18 18:38:55 [HTTP-Dispatcher] DEBUG c.s.o.ApiServer$RealtimeDataHandler - 返回实时数据: 15条记录
+2025-12-18 18:59:32 [main] INFO  com.smarthome.online.ApiServer - API服务器启动成功，监听端口: 8080
+2025-12-18 18:59:32 [main] INFO  com.smarthome.online.ApiServer - 可用接口（本地访问）:
+2025-12-18 18:59:32 [main] INFO  com.smarthome.online.ApiServer -   GET http://localhost:8080/api/realtime/data
+2025-12-18 18:59:32 [main] INFO  com.smarthome.online.ApiServer -   GET http://localhost:8080/api/realtime/circuit-breaker
+2025-12-18 18:59:32 [main] INFO  com.smarthome.online.ApiServer -   GET http://localhost:8080/api/realtime/normal-interfaces
+2025-12-18 18:59:32 [main] INFO  com.smarthome.online.ApiServer - 可用接口（远程访问，替换为hadoop102的IP）:
+2025-12-18 18:59:32 [main] INFO  com.smarthome.online.ApiServer -   GET http://hadoop102:8080/api/realtime/data
+2025-12-18 19:00:49 [HTTP-Dispatcher] ERROR com.smarthome.online.util.JsonUtil - JSON转对象失败，JSON：{"interfaceId":"interface_x13","errorRate":0.1354,"totalCount":288,"errorCount":39,"lastUpdateTime":"2025-12-18 03:00:00"}
+com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Cannot construct instance of `com.smarthome.online.entity.ErrorRateResult` (no Creators, like default constructor, exist): cannot deserialize from Object value (no delegate- or property-based Creator)
+ at [Source: (String)"{"interfaceId":"interface_x13","errorRate":0.1354,"totalCount":288,"errorCount":39,"lastUpdateTime":"2025-12-18 03:00:00"}"; line: 1, column: 2]
+	at com.fasterxml.jackson.databind.exc.InvalidDefinitionException.from(InvalidDefinitionException.java:67)
+	at com.fasterxml.jackson.databind.DeserializationContext.reportBadDefinition(DeserializationContext.java:1909)
+	at com.fasterxml.jackson.databind.DatabindContext.reportBadDefinition(DatabindContext.java:408)
+	at com.fasterxml.jackson.databind.DeserializationContext.handleMissingInstantiator(DeserializationContext.java:1354)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializerBase.deserializeFromObjectUsingNonDefault(BeanDeserializerBase.java:1420)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializer.deserializeFromObject(BeanDeserializer.java:352)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializer.deserialize(BeanDeserializer.java:185)
+	at com.fasterxml.jackson.databind.deser.DefaultDeserializationContext.readRootValue(DefaultDeserializationContext.java:323)
+	at com.fasterxml.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:4730)
+	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3677)
+	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3645)
+	at com.smarthome.online.util.JsonUtil.fromJson(JsonUtil.java:27)
+	at com.smarthome.online.ApiServer$RealtimeDataHandler.getRealDataFromRedis(ApiServer.java:102)
+	at com.smarthome.online.ApiServer$RealtimeDataHandler.handle(ApiServer.java:70)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:98)
+	at jdk.httpserver/sun.net.httpserver.AuthFilter.doFilter(AuthFilter.java:82)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:101)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange$LinkHandler.handle(ServerImpl.java:871)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:98)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange.run(ServerImpl.java:847)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$DefaultExecutor.execute(ServerImpl.java:203)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Dispatcher.handle(ServerImpl.java:566)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Dispatcher.run(ServerImpl.java:531)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2025-12-18 19:00:49 [HTTP-Dispatcher] ERROR c.s.o.ApiServer$RealtimeDataHandler - 获取实时数据失败
+java.lang.NullPointerException: Cannot invoke "com.smarthome.online.entity.ErrorRateResult.getInterfaceId()" because "result" is null
+	at com.smarthome.online.ApiServer$RealtimeDataHandler.getRealDataFromRedis(ApiServer.java:104)
+	at com.smarthome.online.ApiServer$RealtimeDataHandler.handle(ApiServer.java:70)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:98)
+	at jdk.httpserver/sun.net.httpserver.AuthFilter.doFilter(AuthFilter.java:82)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:101)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange$LinkHandler.handle(ServerImpl.java:871)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:98)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange.run(ServerImpl.java:847)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$DefaultExecutor.execute(ServerImpl.java:203)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Dispatcher.handle(ServerImpl.java:566)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Dispatcher.run(ServerImpl.java:531)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2025-12-18 19:02:23 [main] INFO  com.smarthome.online.ApiServer - API服务器启动成功，监听端口: 8080
+2025-12-18 19:02:23 [main] INFO  com.smarthome.online.ApiServer - 可用接口（本地访问）:
+2025-12-18 19:02:23 [main] INFO  com.smarthome.online.ApiServer -   GET http://localhost:8080/api/realtime/data
+2025-12-18 19:02:23 [main] INFO  com.smarthome.online.ApiServer -   GET http://localhost:8080/api/realtime/circuit-breaker
+2025-12-18 19:02:23 [main] INFO  com.smarthome.online.ApiServer -   GET http://localhost:8080/api/realtime/normal-interfaces
+2025-12-18 19:02:23 [main] INFO  com.smarthome.online.ApiServer - 可用接口（远程访问，替换为hadoop102的IP）:
+2025-12-18 19:02:23 [main] INFO  com.smarthome.online.ApiServer -   GET http://hadoop102:8080/api/realtime/data
+2025-12-18 19:25:46 [HTTP-Dispatcher] DEBUG c.s.o.ApiServer$RealtimeDataHandler - 返回实时数据: 15条记录
+2025-12-18 19:27:50 [HTTP-Dispatcher] DEBUG c.s.o.ApiServer$RealtimeDataHandler - 返回实时数据: 15条记录
+2025-12-18 19:27:53 [HTTP-Dispatcher] DEBUG c.s.o.ApiServer$RealtimeDataHandler - 返回实时数据: 15条记录
+2025-12-18 19:39:47 [main] INFO  com.smarthome.online.ApiServer - API服务器启动成功，监听端口: 8080
+2025-12-18 19:45:07 [main] INFO  com.smarthome.online.ApiServer - API服务器启动成功，监听端口: 8080
+2025-12-18 19:45:07 [main] INFO  com.smarthome.online.ApiServer - 可用接口（本地访问）:
+2025-12-18 19:45:07 [main] INFO  com.smarthome.online.ApiServer -   GET http://localhost:8080/api/realtime/data
+2025-12-18 19:45:07 [main] INFO  com.smarthome.online.ApiServer -   GET http://localhost:8080/api/realtime/circuit-breaker
+2025-12-18 19:45:07 [main] INFO  com.smarthome.online.ApiServer -   GET http://localhost:8080/api/realtime/normal-interfaces
+2025-12-18 19:45:07 [main] INFO  com.smarthome.online.ApiServer - 可用接口（远程访问，替换为hadoop102的IP）:
+2025-12-18 19:45:07 [main] INFO  com.smarthome.online.ApiServer -   GET http://hadoop102:8080/api/realtime/data
+2025-12-18 19:45:31 [HTTP-Dispatcher] WARN  c.s.o.ApiServer$RealtimeDataHandler - Redis中未读取到interface_error_rate_ranking键的数据
+2025-12-18 19:45:31 [HTTP-Dispatcher] DEBUG c.s.o.ApiServer$RealtimeDataHandler - 返回实时数据: 0条记录
+2025-12-18 19:45:34 [HTTP-Dispatcher] WARN  c.s.o.ApiServer$RealtimeDataHandler - Redis中未读取到interface_error_rate_ranking键的数据
+2025-12-18 19:45:34 [HTTP-Dispatcher] DEBUG c.s.o.ApiServer$RealtimeDataHandler - 返回实时数据: 0条记录
+2025-12-18 19:45:50 [HTTP-Dispatcher] WARN  c.s.o.ApiServer$RealtimeDataHandler - Redis中未读取到interface_error_rate_ranking键的数据
+2025-12-18 19:45:50 [HTTP-Dispatcher] DEBUG c.s.o.ApiServer$RealtimeDataHandler - 返回实时数据: 0条记录
+2025-12-18 19:46:06 [HTTP-Dispatcher] DEBUG c.s.o.ApiServer$RealtimeDataHandler - 返回实时数据: 15条记录
+2025-12-18 19:46:11 [HTTP-Dispatcher] DEBUG c.s.o.ApiServer$RealtimeDataHandler - 返回实时数据: 15条记录
+2025-12-18 19:52:22 [HTTP-Dispatcher] DEBUG c.s.o.ApiServer$RealtimeDataHandler - 返回实时数据: 15条记录
+2025-12-18 20:00:16 [main] INFO  com.smarthome.online.ApiServer - API服务器启动成功，监听端口: 8080
+2025-12-18 20:00:16 [main] INFO  com.smarthome.online.ApiServer - 可用接口（本地访问）:
+2025-12-18 20:00:16 [main] INFO  com.smarthome.online.ApiServer -   GET http://localhost:8080/api/realtime/data
+2025-12-18 20:00:16 [main] INFO  com.smarthome.online.ApiServer -   GET http://localhost:8080/api/realtime/circuit-breaker
+2025-12-18 20:00:16 [main] INFO  com.smarthome.online.ApiServer -   GET http://localhost:8080/api/realtime/normal-interfaces
+2025-12-18 20:00:16 [main] INFO  com.smarthome.online.ApiServer - 可用接口（远程访问，替换为hadoop102的IP）:
+2025-12-18 20:00:16 [main] INFO  com.smarthome.online.ApiServer -   GET http://hadoop102:8080/api/realtime/data
+2025-12-18 20:01:28 [HTTP-Dispatcher] DEBUG c.s.o.ApiServer$RealtimeDataHandler - 返回实时数据: 5条记录
+2025-12-18 20:01:34 [HTTP-Dispatcher] DEBUG c.s.o.ApiServer$RealtimeDataHandler - 返回实时数据: 5条记录
+2025-12-18 20:01:37 [HTTP-Dispatcher] DEBUG c.s.o.ApiServer$RealtimeDataHandler - 返回实时数据: 5条记录
+2025-12-18 20:01:38 [HTTP-Dispatcher] DEBUG c.s.o.ApiServer$RealtimeDataHandler - 返回实时数据: 5条记录
+2025-12-18 20:06:51 [main] INFO  com.smarthome.online.ApiServer - API服务器启动成功，监听端口: 8080
+2025-12-18 20:06:51 [main] INFO  com.smarthome.online.ApiServer - 可用接口（本地访问）:
+2025-12-18 20:06:51 [main] INFO  com.smarthome.online.ApiServer -   GET http://localhost:8080/api/realtime/data
+2025-12-18 20:06:51 [main] INFO  com.smarthome.online.ApiServer -   GET http://localhost:8080/api/realtime/circuit-breaker
+2025-12-18 20:06:51 [main] INFO  com.smarthome.online.ApiServer -   GET http://localhost:8080/api/realtime/normal-interfaces
+2025-12-18 20:06:51 [main] INFO  com.smarthome.online.ApiServer - 可用接口（远程访问，替换为hadoop102的IP）:
+2025-12-18 20:06:51 [main] INFO  com.smarthome.online.ApiServer -   GET http://hadoop102:8080/api/realtime/data
+2025-12-18 20:32:25 [main] INFO  com.smarthome.online.ApiServer - API服务器启动成功，监听端口: 8080
+2025-12-18 20:32:25 [main] INFO  com.smarthome.online.ApiServer - 可用接口（本地访问）:
+2025-12-18 20:32:25 [main] INFO  com.smarthome.online.ApiServer -   GET http://localhost:8080/api/realtime/data
+2025-12-18 20:32:25 [main] INFO  com.smarthome.online.ApiServer -   GET http://localhost:8080/api/realtime/circuit-breaker
+2025-12-18 20:32:25 [main] INFO  com.smarthome.online.ApiServer -   GET http://localhost:8080/api/realtime/normal-interfaces
+2025-12-18 20:32:25 [main] INFO  com.smarthome.online.ApiServer - 可用接口（远程访问，替换为hadoop102的IP）:
+2025-12-18 20:32:25 [main] INFO  com.smarthome.online.ApiServer -   GET http://hadoop102:8080/api/realtime/data
+2025-12-18 20:38:08 [main] INFO  com.smarthome.online.ApiServer - API服务器启动成功，监听端口: 8080
+2025-12-18 20:38:08 [main] INFO  com.smarthome.online.ApiServer - 可用接口（本地访问）:
+2025-12-18 20:38:08 [main] INFO  com.smarthome.online.ApiServer -   GET http://localhost:8080/api/realtime/data
+2025-12-18 20:38:08 [main] INFO  com.smarthome.online.ApiServer -   GET http://localhost:8080/api/realtime/circuit-breaker
+2025-12-18 20:38:08 [main] INFO  com.smarthome.online.ApiServer -   GET http://localhost:8080/api/realtime/normal-interfaces
+2025-12-18 20:38:08 [main] INFO  com.smarthome.online.ApiServer - 可用接口（远程访问，替换为hadoop102的IP）:
+2025-12-18 20:38:08 [main] INFO  com.smarthome.online.ApiServer -   GET http://hadoop102:8080/api/realtime/data
+2025-12-18 20:38:40 [HTTP-Dispatcher] DEBUG c.s.o.ApiServer$RealtimeDataHandler - 返回实时数据: 15条记录
+2025-12-18 20:38:46 [HTTP-Dispatcher] DEBUG c.s.o.ApiServer$RealtimeDataHandler - 返回实时数据: 15条记录
+2025-12-18 22:34:55 [main] INFO  com.smarthome.online.ApiServer - API服务器启动成功，监听端口: 8080
+2025-12-18 22:34:55 [main] INFO  com.smarthome.online.ApiServer - 可用接口（本地访问）:
+2025-12-18 22:34:55 [main] INFO  com.smarthome.online.ApiServer -   GET http://localhost:8080/api/realtime/data
+2025-12-18 22:34:55 [main] INFO  com.smarthome.online.ApiServer -   GET http://localhost:8080/api/realtime/circuit-breaker
+2025-12-18 22:34:55 [main] INFO  com.smarthome.online.ApiServer -   GET http://localhost:8080/api/realtime/normal-interfaces
+2025-12-18 22:34:55 [main] INFO  com.smarthome.online.ApiServer - 可用接口（远程访问，替换为hadoop102的IP）:
+2025-12-18 22:34:55 [main] INFO  com.smarthome.online.ApiServer -   GET http://hadoop102:8080/api/realtime/data
+2025-12-18 22:43:08 [HTTP-Dispatcher] DEBUG c.s.o.ApiServer$RealtimeDataHandler - 返回实时数据: 15条记录
+2025-12-18 22:43:21 [HTTP-Dispatcher] DEBUG c.s.o.ApiServer$RealtimeDataHandler - 返回实时数据: 15条记录
+2025-12-18 22:43:26 [HTTP-Dispatcher] DEBUG c.s.o.ApiServer$RealtimeDataHandler - 返回实时数据: 15条记录
+2025-12-18 23:04:52 [main] INFO  com.smarthome.online.ApiServer - API服务器启动成功，监听端口: 8080
+2025-12-18 23:04:52 [main] INFO  com.smarthome.online.ApiServer - 可用接口（本地访问）:
+2025-12-18 23:04:52 [main] INFO  com.smarthome.online.ApiServer -   GET http://localhost:8080/api/realtime/data
+2025-12-18 23:04:52 [main] INFO  com.smarthome.online.ApiServer -   GET http://localhost:8080/api/realtime/circuit-breaker
+2025-12-18 23:04:52 [main] INFO  com.smarthome.online.ApiServer -   GET http://localhost:8080/api/realtime/normal-interfaces
+2025-12-18 23:04:52 [main] INFO  com.smarthome.online.ApiServer - 可用接口（远程访问，替换为hadoop102的IP）:
+2025-12-18 23:04:52 [main] INFO  com.smarthome.online.ApiServer -   GET http://hadoop102:8080/api/realtime/data
+2025-12-18 23:04:56 [HTTP-Dispatcher] DEBUG c.s.o.ApiServer$RealtimeDataHandler - 返回实时数据: 15条记录

@@ -1,0 +1,9 @@
+2025-12-18 09:38:12 [main] INFO  com.smarthome.online.ApiServer - API服务器启动成功，监听端口: 8080
+2025-12-18 09:38:12 [main] INFO  com.smarthome.online.ApiServer - 可用接口:
+2025-12-18 09:38:12 [main] INFO  com.smarthome.online.ApiServer -   GET http://localhost:8080/api/realtime/data
+2025-12-18 09:38:12 [main] INFO  com.smarthome.online.ApiServer -   GET http://localhost:8080/api/realtime/circuit-breaker
+2025-12-18 09:38:12 [main] INFO  com.smarthome.online.ApiServer -   GET http://localhost:8080/api/realtime/normal-interfaces
+2025-12-18 09:38:38 [HTTP-Dispatcher] DEBUG c.s.o.ApiServer$RealtimeDataHandler - 返回实时数据: 15条记录
+2025-12-18 09:39:04 [HTTP-Dispatcher] INFO  c.s.o.ApiServer$CircuitBreakerHandler - 未发现熔断接口
+2025-12-18 09:41:30 [HTTP-Dispatcher] DEBUG c.s.o.ApiServer$RealtimeDataHandler - 返回实时数据: 15条记录
+2025-12-18 09:42:13 [HTTP-Dispatcher] DEBUG c.s.o.ApiServer$RealtimeDataHandler - 返回实时数据: 15条记录
